@@ -135,6 +135,9 @@ const [form, setForm] = useState({
 
   return matchesSearch && matchesActive})
 
+  const isDemo = import.meta.env.PROD
+
+
   return (
     <div className="app">
       <header className="top-bar">
@@ -152,6 +155,13 @@ const [form, setForm] = useState({
           <h2>{isEditing ? 'Editar producto' : 'Nuevo producto'}</h2>
 
           {error && <div className="alert">{error}</div>}
+
+          {isDemo && (
+            <div className="alert">
+              Demo online sin conexión a la API real. Los datos se guardan solo en esta sesión.
+            </div>
+          )}
+
 
           <form onSubmit={handleSubmit} className="form">
             <div className="field">
